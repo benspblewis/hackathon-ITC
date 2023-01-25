@@ -51,7 +51,7 @@ export default function ModalSignUp() {
         // number: registerInfo.number,
       };
       console.log(userRegistered);
-      const res = await axios.post(`http://localhost:8080/users/signup`, userRegistered);
+      const res = await axios.post(`http://localhost:8080/user/signup`, userRegistered);
       alert(res.data.message);
       if (res.data.user) {
         setIsOpen(false);
@@ -105,10 +105,11 @@ export default function ModalSignUp() {
           </button>
         </form>
       </Modal>
+    
 
-      <div>
+      
       <img src={logo} alt="lingochat"/>
-      </div>
+      
       
     </div>
   );
