@@ -17,12 +17,14 @@ export default function ModalSignUp() {
   // Modal Functions
   const [registerInfo, setRegisterInfo] = useState({
     firstName: "",
-    lastName: "",
+    age: "",
+    gender: "",
     email: "",
     password: "",
     conPassword: "",
-    number: "",
-    admin: "",
+    // number: "",
+    // admin: "",
+
   });
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
@@ -40,13 +42,13 @@ export default function ModalSignUp() {
     e.preventDefault();
     try {
       const userRegistered = {
-        firstName: registerInfo.firstName,
+        firstName: registerInfo.name,
+        age: registerInfo.age,
+        gender: registerInfo.gender,
         email: registerInfo.email,
-        age: registerInfo.email,
         password: registerInfo.password,
         conPassword: registerInfo.conPassword,
-        number: registerInfo.number,
-        gender: registerInfo.gender,
+        // number: registerInfo.number,
       };
       const res = await axios.post(`http://localhost:8000/users/signup`, userRegistered);
       alert(res.data.message);
@@ -72,7 +74,7 @@ export default function ModalSignUp() {
         </div>
         <form className="form" onSubmit={handleSubmit}>
           <div className="firstLastName">
-            <input className="firstName" placeholder="your name" type="name" onChange={handleRegisterInfo} value={registerInfo.firstName} name="firstName" id="firstName" required />
+            <input className="firstName" placeholder="your name" type="name" onChange={handleRegisterInfo} value={registerInfo.name} name="firstName" id="firstName" required />
             {/* <input className="lastName" placeholder="last name" type="name" onChange={handleRegisterInfo} value={registerInfo.lastName} name="lastName" id="lastName" required /> */}
           </div>
           <input placeholder="age" type="age" className="inputLogin" onChange={handleRegisterInfo} value={registerInfo.age} name="age" id="age" required />
