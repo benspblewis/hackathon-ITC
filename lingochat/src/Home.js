@@ -42,18 +42,17 @@ export default function ModalSignUp() {
     e.preventDefault();
     try {
       const userRegistered = {
-        firstName: registerInfo.firstName,
+        name: registerInfo.firstName,
         age: registerInfo.age,
         gender: registerInfo.gender,
         email: registerInfo.email,
         password: registerInfo.password,
-        conPassword: registerInfo.conPassword,
-        // number: registerInfo.number,
+        repassword: registerInfo.conPassword,
       };
       console.log(userRegistered);
       const res = await axios.post(`http://localhost:8080/user/signup`, userRegistered);
-      alert(res.data.message);
-      if (res.data.user) {
+      if (res.data.ok) {
+        console.log("signup response",res.data)
         setIsOpen(false);
       }
     } catch (err) {
@@ -95,7 +94,8 @@ export default function ModalSignUp() {
 
           {/* </select> */}
 
-          <select type="text" className="inputLogin" placeholder="Gender" onChange={handleRegisterInfo} value={registerInfo.gender} name="gender" id="gender" required style={{ width: "100%" }}>
+          <select type="text" className="inputLogin" placeholder="Gender" onChange={handleRegisterInfo} defaultValue="none" name="gender" id="gender" required style={{ width: "100%" }}>
+            <option value='none' disabled >Select</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
           </select>
