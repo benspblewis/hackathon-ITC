@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import Modal from "react-modal";
 import axios from "axios";
+import logo from './logo.png'
 
 Modal.setAppElement("*");
 const customStyles = {
@@ -24,7 +25,6 @@ export default function ModalSignUp() {
     conPassword: "",
     // number: "",
     // admin: "",
-
   });
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
@@ -50,7 +50,7 @@ export default function ModalSignUp() {
         conPassword: registerInfo.conPassword,
         // number: registerInfo.number,
       };
-      console.log(userRegistered)
+      console.log(userRegistered);
       const res = await axios.post(`http://localhost:8080/users/signup`, userRegistered);
       alert(res.data.message);
       if (res.data.user) {
@@ -63,8 +63,11 @@ export default function ModalSignUp() {
   };
   return (
     <div>
-      <button className="modalSignbtn centerSignupBtn" onClick={openModal}>
+      <button className="modalSignbtn centerSignupBtn text-center" onClick={openModal}>
         Sign Up
+      </button>
+      <button className="modalSignbtn centerSignupBtn text-center" onClick={openModal}>
+        Login
       </button>
       <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles} contentLabel="Example Modal" className="modalForm">
         <div className="modalTop">
@@ -84,10 +87,10 @@ export default function ModalSignUp() {
           <input placeholder="confirm password" type="password" className="inputLogin" onChange={handleRegisterInfo} value={registerInfo.conPassword} name="conPassword" id="conPassword" required />
           {/* <input placeholder="phone number" type="tel" className="inputLogin" onChange={handleRegisterInfo} value={registerInfo.number} name="number" id="number" required /> */}
           {/* <input placeholder="gender" type="text" className="inputLogin" onChange={handleRegisterInfo} value={registerInfo.gender} name="gender" id="gender" required /> */}
-          
+
           {/* <select type="text" className="inputLogin" placeholder="Gender" onChange={handleRegisterInfo} value={registerInfo.gender} name="gender" id="gender" required style={{ width: "100%" }}> */}
-            {/* <option>Gender?</option> */}
-            {/* <option value="male">Male</option>
+          {/* <option>Gender?</option> */}
+          {/* <option value="male">Male</option>
             <option value="female">Female</option> */}
 
           {/* </select> */}
@@ -95,13 +98,18 @@ export default function ModalSignUp() {
           <select type="text" className="inputLogin" placeholder="Gender" onChange={handleRegisterInfo} value={registerInfo.gender} name="gender" id="gender" required style={{ width: "100%" }}>
             <option value="male">Male</option>
             <option value="female">Female</option>
-</select>
+          </select>
 
           <button className="modalSignbtn" type="submit">
             Create Account
           </button>
         </form>
       </Modal>
+
+      <div>
+      <img src={logo} alt="lingochat"/>
+      </div>
+      
     </div>
   );
 }
