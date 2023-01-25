@@ -190,5 +190,46 @@
   font-size: 2rem;
 }
 .modalSignbtn:hover {
-  color: red;
+  color: rgb(21, 101, 239);
+}
+
+.modalTop {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+.closeModal {
+  cursor: pointer;
+  border: none;
+  color: inherit;
+  outline: inherit;
+  background: none;
+}
+.closeModal:hover {
+  color: rgb(21, 101, 239);
+}
+
+.firstLastName {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5em;
+  width: 20.625rem;
+  font-family: "Chicle", cursive;
+}
+.firstName {
+  width: 8.625rem;
+  font-family: "Chicle", cursive;
+  margin-right: 0.3em;
+  border-radius: 6px;
+  font-size: 1.063rem;
+  padding: 0.875rem 1rem;
+}
+.lastName {
+  width: 8.625rem;
+  font-family: "Chicle", cursive;
+  border-radius: 6px;
+  font-size: 1.063rem;
+  padding: 0.875rem 1rem;
+  margin-left: 0.6em;
 }
