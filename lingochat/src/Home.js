@@ -17,7 +17,7 @@ export default function ModalSignUp() {
   // Modal Functions
   const [registerInfo, setRegisterInfo] = useState({
     firstName: "",
-    age: "",
+    age: 0,
     gender: "",
     email: "",
     password: "",
