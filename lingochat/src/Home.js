@@ -42,7 +42,7 @@ export default function ModalSignUp() {
     e.preventDefault();
     try {
       const userRegistered = {
-        firstName: registerInfo.name,
+        firstName: registerInfo.firstName,
         age: registerInfo.age,
         gender: registerInfo.gender,
         email: registerInfo.email,
@@ -50,7 +50,8 @@ export default function ModalSignUp() {
         conPassword: registerInfo.conPassword,
         // number: registerInfo.number,
       };
-      const res = await axios.post(`http://localhost:8000/users/signup`, userRegistered);
+      console.log(userRegistered)
+      const res = await axios.post(`http://localhost:8080/users/signup`, userRegistered);
       alert(res.data.message);
       if (res.data.user) {
         setIsOpen(false);
@@ -82,11 +83,20 @@ export default function ModalSignUp() {
           <input placeholder="password" type="password" className="inputLogin" onChange={handleRegisterInfo} value={registerInfo.password} name="password" id="password" required />
           <input placeholder="confirm password" type="password" className="inputLogin" onChange={handleRegisterInfo} value={registerInfo.conPassword} name="conPassword" id="conPassword" required />
           {/* <input placeholder="phone number" type="tel" className="inputLogin" onChange={handleRegisterInfo} value={registerInfo.number} name="number" id="number" required /> */}
-          <select className="inputLogin" onChange={handleRegisterInfo} value={registerInfo.gender} name="admin" id="admin" required style={{ width: "100%" }}>
-            <option>Gender?</option>
-            <option>Male</option>
-            <option>Female</option>
-          </select>
+          {/* <input placeholder="gender" type="text" className="inputLogin" onChange={handleRegisterInfo} value={registerInfo.gender} name="gender" id="gender" required /> */}
+          
+          {/* <select type="text" className="inputLogin" placeholder="Gender" onChange={handleRegisterInfo} value={registerInfo.gender} name="gender" id="gender" required style={{ width: "100%" }}> */}
+            {/* <option>Gender?</option> */}
+            {/* <option value="male">Male</option>
+            <option value="female">Female</option> */}
+
+          {/* </select> */}
+
+          <select type="text" className="inputLogin" placeholder="Gender" onChange={handleRegisterInfo} value={registerInfo.gender} name="gender" id="gender" required style={{ width: "100%" }}>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+</select>
+
           <button className="modalSignbtn" type="submit">
             Create Account
           </button>
