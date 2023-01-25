@@ -8,12 +8,12 @@ const Chat = ({ socket }) => {
     const [typingStatus, setTypingStatus] = useState('');
     const lastMessageRef = useRef(null);
   
+    
     useEffect(() => {
       socket.on('messageResponse', (data) => setMessages([...messages, data]));
     }, [socket, messages]);
   
     useEffect(() => {
-      // 👇️ scroll to bottom every time messages change
       lastMessageRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
   

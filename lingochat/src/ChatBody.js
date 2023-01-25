@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const ChatBody = ({ messages, lastMessageRef, typingStatus }) => {
   const navigate = useNavigate();
+  const [languages, setLanguages] = useState([]);
 
   const handleLeaveChat = () => {
     localStorage.removeItem('userName');
@@ -13,7 +14,9 @@ const ChatBody = ({ messages, lastMessageRef, typingStatus }) => {
   return (
     <>
       <header className="chat__mainHeader">
-        <p>Hangout with Colleagues</p>
+      {languages.map((language) => (
+            <p key={language.socketID}>Welcome to the {language.language}</p>
+          ))}
         <button className="leaveChat__btn" onClick={handleLeaveChat}>
           LEAVE CHAT
         </button>

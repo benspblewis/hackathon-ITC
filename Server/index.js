@@ -13,7 +13,7 @@ const socketIO = require('socket.io')(http, {
 });
 
 let users = [];
-
+let languages = []
 socketIO.on('connection', (socket) => {
   console.log(`⚡: ${socket.id} user just connected!`);
   socket.on('message', (data) => {
@@ -27,7 +27,7 @@ socketIO.on('connection', (socket) => {
     console.log(users);
     socketIO.emit('newUserResponse', users);
   });
-
+  
   socket.on('disconnect', () => {
     console.log('🔥: A user disconnected');
     users = users.filter((user) => user.socketID !== socket.id);

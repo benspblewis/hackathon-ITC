@@ -1,27 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Home = ({ socket }) => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState('');
 
+  const [language, setLanguage] = useState('');
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     localStorage.setItem('userName', userName);
-    socket.emit('newUser', { userName, socketID: socket.id });
-    navigate('/chat');
-
+    socket.emit('newUser', {language, userName, socketID: socket.id });
+    navigate(`/chat`);
+    // const chatId = await axios.post('/chat/join-chat', {
+    //   userId: currentUserId, language: selectedLanguage
+    // })
+    // if (chatId){
+    // navigate(`/chat/${chatId}`);
+    // }
+    // else {
+    //   alert("Could not find room")
+    // }
   };
 
-  const FindRoom = () => {
-    navigate('/FindRoom')
-  }
+  const [roomName, setRoomName] = useState("");
 
+  const handleRoomNameChange = (event) => {
+    setRoomName(event.target.value);
+  };
+  
   return (    
   <>
 
     <form className="home__container" onSubmit={handleSubmit}>
-      <h2 className="home__header">Sign in to Open Chat</h2>
+      <h2 className="home__header">Please choose a username and a language to start your chin wag now!</h2>
       <label htmlFor="username">Username</label>
       <input
         type="text"
@@ -31,9 +44,16 @@ const Home = ({ socket }) => {
         className="username__input"
         value={userName}
         onChange={(e) => setUserName(e.target.value)}
+        required
       />
-      <button className="home__cta" >SIGN IN</button>
-      <button className="home__cta" onClick={FindRoom}>Find Chat</button>
+          <label>Language!</label>
+          <select required value={roomName} onChange={handleRoomNameChange}> 
+            <option></option>
+            <option value="English">English</option>
+            <option value="Spanish">Spanish</option>
+            <option value="Mandarin">Mandarin</option>
+          </select>
+      <button className="home__cta">Find Chat</button>
     </form>
     </>
   );
