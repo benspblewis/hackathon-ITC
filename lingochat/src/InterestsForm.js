@@ -38,6 +38,7 @@ console.log(interestsArray)
 
   return (
     <>
+    <h1>Please choose your top 5 interests and press submit</h1>
     <form className="interestform">
         <div className="grid">
     <button id="1" onClick={handleClick} style={styles.button} className="interests">History</button>
