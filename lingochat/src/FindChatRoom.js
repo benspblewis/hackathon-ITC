@@ -1,42 +1,50 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
 
-function FindChatRoom({ socket }) {
-    const navigate = useNavigate();
-    const [userName, setUserName] = useState('');
-
-    const handleLanguageRoom = async (e) => {
-        e.preventDefault();        
-        localStorage.setItem('userName', userName);
-        socket.emit('newUser', { userName, socketID: socket.id });
-        navigate('/chat');
-        // navigate('/chat')
-    // const chatId = await axios.post('/chat/join-chat', {
-    //   userId: currentUserId, language: selectedLanguage
-    // })
-    // if (chatId){
-    // navigate(`/chat/${chatId}`);
-    // }
-    // else {
-    //   alert("Could not find room")
-    // }
+const Home = ({ username, setUsername, room, setRoom, socket }) => {
+  const navigate = useNavigate();
+  const [userName, setUserName] = useState("");
+  const [roomName, setRoomName] = useState("");
+  const {currentUser} = useAuthContext()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    localStorage.setItem("userName", userName);
+    // socket.emit("joinRoom", { roomName, userName, socketID: socket.id });
+    const response = await axios.post("http://localhost:8080/chat/join-chat", {language: roomName, userId: currentUser.userId})
+    if(response){
+      console.log(response.data)
+      navigate(`/chat/?username=${userName}userId=${currentUser.userId}&&roomId=${response.data.chatId}`);
     }
+  };
 
   return (
-    <div>
-        <form className="home__container" >
-        <label>Please choose a language to start your language learning journey!</label>
-          <select>
-            <option>Please Select</option>
-            <option>English</option>
-            <option>Spanish</option>
-            <option>Mandarin</option>
-          </select>
-          <button type='submit' onClick={handleLanguageRoom}>FIND CHAT ROOM!</button>
-        </form>        
-    </div>
-    
-  )
-}
+    <>
+      <form className="home__container" onSubmit={handleSubmit}>
+        <h2 className="home__header">Please choose a username and a language to start your chin wag now!</h2>
+        <label htmlFor="username">Username</label>
+        <input
+          type="text"
+          minLength={6}
+          name="username"
+          id="username"
+          className="username__input"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+          required
+        />
+        <label>Language!</label>
+        <select required value={room} onChange={(e) => setRoomName(e.target.value)}>
+          <option defaultValue='' disabled>Select</option>
+          <option value="English">English</option>
+          <option value="Spanish">Spanish</option>
+          <option value="Mandarin">Mandarin</option>
+        </select>
+        <button className="home__cta">Find Chat</button>
+      </form>
+    </>
+  );
+};
 
-export default FindChatRoom
+export default Home;
