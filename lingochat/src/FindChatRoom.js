@@ -2,6 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
+import { Box, Flex, Link, Text, Center, Button, Card  } from "@chakra-ui/react";
+import logo from "./logo.png";
+
+
 
 const Home = ({ username, setUsername, room, setRoom, socket }) => {
   const navigate = useNavigate();
@@ -21,10 +25,16 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
 
   return (
     <>
+    <Box>
+    <Card backgroundColor="blue.50" paddingBottom={200}>
+      <Box alignSelf="center">
+      <img src={logo} alt="lingochat" width={500}/>
+      </Box>
+
       <form className="home__container" onSubmit={handleSubmit}>
         <h2 className="home__header">Please choose a username and a language to start your chin wag now!</h2>
         <label htmlFor="username">Username</label>
-        <input
+        <input 
           type="text"
           minLength={6}
           name="username"
@@ -41,8 +51,10 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
           <option value="Spanish">Spanish</option>
           <option value="Mandarin">Mandarin</option>
         </select>
-        <button className="home__cta">Find Chat</button>
+        <Button backgroundColor="green.200" className="home__cta">Find Chat</Button>
       </form>
+      </Card>
+      </Box>
     </>
   );
 };
