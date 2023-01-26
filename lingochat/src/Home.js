@@ -64,9 +64,10 @@ export default function ModalSignUp() {
     <Box>
       <Box textAlign="center">
         <Flex flexWrap="wrap">
-          <Text fontSize="xl" ml={10} mr={10}>
-            Welcome to LingoChat. LingoChat is the social application that connects the diverse cultures that make up our society.
-            Create an account and discover the new way to interact with people.
+
+        <Text fontSize="xl" ml={10} mr={10} mt={10}>
+        Welcome to LingoChat. LingoChat is the social application that connects the diverse cultures that make up our society. Create an account and discover the new way to interact with people.
+
           </Text>
         </Flex>
       </Box>
@@ -159,9 +160,9 @@ export default function ModalSignUp() {
                 <option value="female">Female</option>
               </select>
 
-              <button className="modalSignbtn" type="submit">
+              <Button className="modalSignbtn" type="submit">
                 Create Account
-              </button>
+              </Button>
             </form>
           </>
         ) : (
