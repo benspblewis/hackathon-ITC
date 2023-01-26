@@ -1,8 +1,10 @@
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
+import { Box, Flex, Link, Text, Center, Button } from "@chakra-ui/react";
+
 
 function Login() {
   const [password, setPassword] = useState("");
@@ -86,7 +88,7 @@ function Login() {
       <Form.Group className="mb-3">
         <Form.Check type="checkbox" label="Rember Me" />
       </Form.Group>
-      <Button variant="primary" type="submit" backgroundColor="green.100">
+      <Button variant="primary" type="submit" backgroundColor="white">
         Login
       </Button>
     </Form>
