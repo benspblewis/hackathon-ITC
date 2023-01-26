@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .home__container {
   width: 100%;
@@ -38,12 +38,13 @@
 .chat {
   width: 100%;
   height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
 }
 .chat__sidebar {
   height: 100%;
-  background-color: #f9f5eb;
+  background-color: #c6f6d5;
   flex: 0.2;
   padding: 20px;
   border-right: 1px solid #fdfdfd;
@@ -72,7 +73,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  background-color: #f9f5eb;
+  background-color: #c6f6d5;
 }
 .leaveChat__btn {
   padding: 10px;
@@ -96,7 +97,7 @@
 }
 .chat__footer {
   padding: 10px;
-  background-color: #f9f5eb;
+  background-color: #c6f6d5;
   height: 10vh;
 }
 .form {
@@ -124,7 +125,7 @@
   cursor: pointer;
 }
 .sendBtn:hover {
-  background-color: rgb(129, 201, 129);
+  background-color: #217985;
 }
 .message__recipient {
   background-color: #f5ccc2;
@@ -172,7 +173,7 @@
   left: 70%;
   display: flex;
   flex-direction: column;
-  background-color: #FCF5EF;
+  background-color: rgba(204, 245, 204, 0.711);
   padding: 3rem;
   border-radius: 8px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -190,7 +191,7 @@
   font-size: 2rem;
 }
 .modalSignbtn:hover {
-  color: rgb(21, 101, 239);
+  color: #217985;
 }
 
 .modalTop {
@@ -207,7 +208,7 @@
   background: none;
 }
 .closeModal:hover {
-  color: rgb(21, 101, 239);
+  color: #217985;
 }
 
 .firstLastName {
@@ -273,3 +274,9 @@
 .submitinterests:hover {
   transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
+
+.custom-spacing {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+

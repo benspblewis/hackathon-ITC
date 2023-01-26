@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAppContext } from "./hooks/useAppContext";
 import { useAuthContext } from "./hooks/useAuthContext";
 
 const Home = ({ username, setUsername, room, setRoom, socket }) => {
@@ -8,14 +9,16 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
   const [userName, setUserName] = useState("");
   const [roomName, setRoomName] = useState("");
   const {currentUser} = useAuthContext()
+  const {avtiveUsers, setAveUsers} = useAppContext()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     localStorage.setItem("userName", userName);
-    // socket.emit("joinRoom", { roomName, userName, socketID: socket.id });
     const response = await axios.post("http://localhost:8080/chat/join-chat", {language: roomName, userId: currentUser.userId})
     if(response){
       console.log(response.data)
-      navigate(`/chat/?username=${userName}userId=${currentUser.userId}&&roomId=${response.data.chatId}`);
+      setAveUsers((prev)=> [...prev, response.data.activeUser])
+      navigate(`/chat/?username=${userName}&&userId=${currentUser.userId}&&roomId=${response.data.chatId}`);
     }
   };
 
@@ -35,11 +38,11 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
           required
         />
         <label>Language!</label>
-        <select required value={room} onChange={(e) => setRoomName(e.target.value)}>
-          <option defaultValue='' disabled>Select</option>
-          <option value="English">English</option>
-          <option value="Spanish">Spanish</option>
-          <option value="Mandarin">Mandarin</option>
+        <select required value={room} defaultValue="none" onChange={(e) => setRoomName(e.target.value)}>
+          <option value='none' disabled>Select</option>
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+          <option value="mandarin">Mandarin</option>
         </select>
         <button className="home__cta">Find Chat</button>
       </form>
