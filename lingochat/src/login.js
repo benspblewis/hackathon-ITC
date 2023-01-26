@@ -86,7 +86,7 @@ function Login() {
       <Form.Group className="mb-3">
         <Form.Check type="checkbox" label="Rember Me" />
       </Form.Group>
-      <Button variant="primary" type="submit" backgroundColor="green.100">
+      <Button variant="primary" type="submit" backgroundcolor="green.100">
         Login
       </Button>
     </Form>
