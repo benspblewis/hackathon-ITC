@@ -8,7 +8,6 @@ const ChatBody = ({ messages, lastMessageRef, typingStatus }) => {
   const handleLeaveChat = () => {
     localStorage.removeItem('userName');
     navigate('/findRoom');
-    window.location.reload();
   };
 
   return (

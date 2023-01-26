@@ -37,9 +37,9 @@ const Home = ({ username, setUsername, room, setRoom, socket }) => {
         <label>Language!</label>
         <select required value={room} onChange={(e) => setRoomName(e.target.value)}>
           <option defaultValue='' disabled>Select</option>
-          <option value="English">English</option>
-          <option value="Spanish">Spanish</option>
-          <option value="Mandarin">Mandarin</option>
+          <option value="english">English</option>
+          <option value="spanish">Spanish</option>
+          <option value="mandarin">Mandarin</option>
         </select>
         <button className="home__cta">Find Chat</button>
       </form>

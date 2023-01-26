@@ -56,6 +56,7 @@ function Login() {
       if (res.data.ok) {
        console.log(res.data)
        handleCurrentUser(res.data)
+       localStorage.setItem('currentUser', JSON.stringify(res.data))
         navigate('/FindRoom')
       }
     } catch (err) {
