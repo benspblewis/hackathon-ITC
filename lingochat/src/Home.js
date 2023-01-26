@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import Modal from "react-modal";
 import axios from "axios";
-import logo from './logo.png'
+import logo from './images/logo.png'
 import Login from "./login";
 
 Modal.setAppElement("*");
