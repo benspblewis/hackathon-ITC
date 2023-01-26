@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { useAuthContext } from "./hooks/useAuthContext";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 
 function InterestsForm() {
+  const navigate = useNavigate();
     const [interestsArray, setInterestsArray] = useState([]);
     const { currentUser} = useAuthContext()
 
@@ -13,6 +15,8 @@ console.log("hello")
 try{
     const res = await axios.post(
       `http://localhost:8080/user/add-interests`, interestsArray);
+      navigate('/findRoom');
+
 }
 catch(err){
     console.log(err)
@@ -32,8 +36,8 @@ if(interestsArray.length < 5){
 else{
     alert("Please only select 5")
 }
-// interestIds.push(interest)
 }
+
 console.log(interestsArray)
 
   return (

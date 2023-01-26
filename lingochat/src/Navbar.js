@@ -1,11 +1,14 @@
 import { Flex ,Button} from "@chakra-ui/react";
 import { useAppContext } from "./hooks/useAppContext";
 import { useAuthContext } from "./hooks/useAuthContext";
+import { useNavigate } from 'react-router-dom';
+
 
 function Navbar() {
 
     const { currentUser, handleCurrentUser } = useAuthContext();
     const {modalIsOpen,  openModal, closeModal,formToShow, setFormToShow} = useAppContext();
+    const navigate = useNavigate();
 
 
 function handleLoginClick() {
@@ -21,6 +24,9 @@ function handleLoginClick() {
     handleCurrentUser(null)
   }
   
+  function handleInterestsClick(){
+    navigate('/interests');
+  }
   return (
     <Flex
       as="nav"
@@ -43,9 +49,14 @@ function handleLoginClick() {
             </Button>
           </>
         ) : (
+          <>
           <Button onClick={handleLogoutClick} mt={2} mb={2}>
             Logout
           </Button>
+          <Button onClick={handleInterestsClick} mt={2} mb={2}>
+            Interests
+          </Button>
+          </>
         )}
       </div>
     </Flex>
