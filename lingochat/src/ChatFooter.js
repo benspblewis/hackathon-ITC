@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ChatFooter = ({ socket }) => {
+const ChatFooter = ({ socket ,name}) => {
   const [message, setMessage] = useState('');
 
   const handleTyping = () =>
@@ -9,7 +9,8 @@ const ChatFooter = ({ socket }) => {
   const handleSendMessage = (e) => {
     e.preventDefault();
     if (message.trim() && localStorage.getItem('userName')) {
-      socket.emit('chatMessage', message);
+      const newMessage = `${name}: ${message}`
+      socket.emit('chatMessage', newMessage);
     }
     setMessage('');
   };
