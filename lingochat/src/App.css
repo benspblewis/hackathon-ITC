@@ -234,3 +234,9 @@
   padding: 0.875rem 1rem;
   margin-left: 0.6em;
 }
+
+.custom-spacing {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
