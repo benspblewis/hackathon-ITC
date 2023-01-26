@@ -6,7 +6,7 @@ function AppContext({children}){
 
     const [modalIsOpen, setIsOpen] = useState(false);
     const [formToShow, setFormToShow] = useState(null);
-
+    const [avtiveUsers, setAveUsers] = useState([])
     function openModal() {
         setIsOpen(true);
       }
@@ -15,7 +15,7 @@ function AppContext({children}){
       }
 
     return(
-        <Context.Provider value={{modalIsOpen, openModal, closeModal,formToShow, setFormToShow}}>
+        <Context.Provider value={{modalIsOpen, openModal, closeModal,formToShow, setFormToShow, avtiveUsers, setAveUsers}}>
             {children}
         </Context.Provider>
     )
