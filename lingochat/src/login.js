@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "./hooks/useAuthContext";
 import { Box, Flex, Link, Text, Center, Button } from "@chakra-ui/react";
+import './App.css';
 
 
 function Login() {
@@ -64,8 +65,8 @@ function Login() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+      <Form.Group className="mb-3 custom-spacing" controlId="formBasicEmail" mt={2}>
+        <Form.Label>Email address &nbsp;</Form.Label>
         <Form.Control
           type="email"
           onChange={(event) => setEmail(event.target.value)}
@@ -74,8 +75,8 @@ function Login() {
         <Form.Text>{emailError}</Form.Text>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+      <Form.Group className="mb-3 custom-spacing" controlId="formBasicPassword">
+        <Form.Label>Password &nbsp;</Form.Label>
         <Form.Control
           type="password"
           onChange={(event) => setPassword(event.target.value)}
@@ -84,10 +85,10 @@ function Login() {
         <Form.Text>{passwordError}</Form.Text>
       </Form.Group>
 
-      <Form.Group className="mb-3">
+      <Form.Group className="mb-3 custom-spacing">
         <Form.Check type="checkbox" label="Rember Me" />
       </Form.Group>
-      <Button variant="primary" type="submit" backgroundColor="white">
+      <Button variant="primary" type="submit" backgroundcolor="white">
         Login
       </Button>
     </Form>
