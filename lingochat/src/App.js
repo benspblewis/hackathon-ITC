@@ -1,13 +1,14 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Chat from "./Chat";
-import IO from "socket.io-client";
-import "./App.css";
-import FindChatRoom from "./FindChatRoom";
-import Home from "./Home";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import InterestsForm from './InterestsForm';
+import Chat from './Chat';
+import IO from 'socket.io-client';
+import './App.css';
+import FindChatRoom from './FindChatRoom';
+import Home from './Home';
+const socket = IO.connect('http://localhost:8080');
 import UserRoute from "./private routes/userRoutes";
 import Navbar from "./Navbar";
 import AppContext from "./contexts/AppContext";
-const socket = IO.connect("http://localhost:8080");
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
             }
           ></Route>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/interests" element={<InterestsForm />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
